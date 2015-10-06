@@ -81,36 +81,6 @@ class ChessLibrary(object):
                         BlackPlayer(Position(int(bkX), int(bkY)))]
                 self.board = Board(self.players[0].pieces, self.players[1].pieces)
 
-# A class representing a quadrant of the chess board as determined by the White rook's position
-class Quadrant(object):
-	def __init__(self, position, width, height):
-		self.position = position
-		self.width = width
-		self.height = height
-		self.area = (width - 1) * (height - 1)
-
-	def __str__(self):
-		return str(self.position) + ", " + str(self.width) + " x " + str(self.height)
-
-	def __repr__(self):
-		return self.__str__()
-
-	# Returns true the if the given test position is contained inside the quadrant
-	def contains(self, testPosition):
-		if (testPosition.x >= self.position.x) and (testPosition.x < self.position.x + self.width):
-			if (testPosition.y >= self.position.y) and (testPosition.y < self.position.y +
-					self.height):
-				return True
-		return False
-
-	# Returns a list of board positions that are contained inside the quadrant
-	def getContainedPositions(self):
-		containment = []
-		for x in range(self.position.x, self.position.x + self.width):
-			for y in range(self.position.y, self.position.y + self.height):
-				containment.append(Position(x, y))
-		return containment
-
 # A chess player base class
 class Player(object):
 	# Generate the game graph from the current board state
